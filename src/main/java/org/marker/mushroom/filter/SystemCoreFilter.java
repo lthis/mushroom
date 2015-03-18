@@ -127,9 +127,9 @@ public class SystemCoreFilter implements Filter {
 		 *              排除过滤格式
 		 * ============================================
 		 */
-		int dotIndex= uri.lastIndexOf(".") + 1;// 请求文件后缀
+		int dotIndex= uri.lastIndexOf(".");// 请求文件后缀
 		if (dotIndex != -1) {// 有后缀
-			String suffix = uri.substring(dotIndex, uri.length());
+			String suffix = uri.substring(dotIndex + 1, uri.length());
 			if (suffixPattern.matcher(suffix).matches()) {
 				chain.doFilter(req, response);
 				return; // 因为这里是静态文件，所以直接返回了
